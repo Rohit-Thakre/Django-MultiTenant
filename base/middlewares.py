@@ -13,14 +13,17 @@ class CollegeMiddleware:
 
     def __call__(self, request):
         user = request.user
+        print(user)
     
         if request.user and not request.user.is_anonymous:
             tenant_obj = get_tenant_from_user(user)
             set_current_tenant(tenant_obj)
             # print(get_current_tenant())
-           
+            return self.get_response(request)
+
+
+        return HttpResponse("Nice Try, now hit with valid user details")  
         
-        return self.get_response(request)
 
 
 def get_tenant_from_user(user):
