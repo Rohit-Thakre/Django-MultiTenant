@@ -9,7 +9,6 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
-
 class SetTenantModel:
     permission_classes = [IsAuthenticated]
     def __init__(self, organisation):
